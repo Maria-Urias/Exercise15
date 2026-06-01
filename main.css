@@ -80,6 +80,17 @@ article {
 	}
 }
 
+.speaker {
+	animation: speaker-pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes speaker-pulse {
+	to {
+		filter: drop-shadow(10px 10px 10px var(--dark)) brightness(125%);
+		transform: scale(1.1);
+	}
+}
+
 /* the styles for the aside */
 aside {
 	order: 1;
@@ -89,6 +100,23 @@ aside {
 	}
 	& img {
 		margin-bottom: .9em;
+		transform-origin: right center;
+		transition: transform 2s;
+	}
+	& img:hover {
+		/* transform: translateX(30px); */
+		transform: rotate(180deg);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	article img,
+	.speaker,
+	aside img,
+	aside img:hover {
+		animation: none;
+		transition: none;
+		transform: none;
 	}
 }
 
